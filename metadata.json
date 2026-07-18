@@ -1,0 +1,6 @@
+{
+  "name": "Savar Shetty Portfolio",
+  "description": "A high-end, cinematic personal portfolio for an AI & ML student.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

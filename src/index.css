@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=Playfair+Display:ital,wght@0,900;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+}
+
+@layer base {
+  :root, .dark {
+    --bg-color: #080808;
+    --fg-color: #ffffff;
+    --border-color: #1a1a1a;
+    --muted-color: #999999;
+    --micro-label: #666666;
+    --surface-color: #111111;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    font-family: var(--font-sans);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--micro-label);
+}
+
+/* Hide default cursor on desktop to use custom cursor */
+@media (pointer: fine) {
+  body, a, button, input, textarea, [role="button"], label {
+    cursor: none !important;
+  }
+}
+
+.micro-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--micro-label);
+  font-weight: 600;
+}
+
+.number-badge {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: #333333;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px var(--muted-color);
+  color: transparent;
+}
+
+.text-stroke:hover {
+  color: var(--fg-color);
+}
