@@ -1,9 +1,27 @@
-import { Moon, Sun } from 'lucide-react';
 import { motion, useMotionValueEvent, useScroll } from 'motion/react';
 import { useEffect, useState } from 'react';
 
+const navContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const navItem = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } 
+  }
+};
+
 export default function Navbar() {
-  const [isDark, setIsDark] = useState(false);
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
 
@@ -17,25 +35,13 @@ export default function Navbar() {
   });
 
   useEffect(() => {
-    // Check initial system preference or localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.theme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
       document.documentElement.classList.add('dark');
-      setIsDark(true);
+      localStorage.theme = 'dark';
     }
   }, []);
-
-  const toggleDark = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    if (newTheme) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
 
   return (
     <motion.nav 
@@ -48,20 +54,27 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-5 md:px-12 backdrop-blur-md bg-opacity-70 border-b border-black/5 dark:border-white/5"
       style={{ backgroundColor: 'color-mix(in srgb, var(--bg-color) 70%, transparent)' }}
     >
-      <a href="#" className="font-display font-black text-xl tracking-tighter">SAVAR SHETTY</a>
+      <motion.a 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        href="#" 
+        className="font-display font-black text-xl tracking-tighter"
+      >
+        SAVAR SHETTY
+      </motion.a>
       
-      <div className="flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
-        <a href="#about" className="hover:text-zinc-100 transition-colors hidden md:block">About</a>
-        <a href="#projects" className="hover:text-zinc-100 transition-colors hidden md:block">Projects</a>
-        <a href="#contact" className="hover:text-zinc-100 transition-colors hidden md:block">Contact</a>
-        <button 
-          onClick={toggleDark} 
-          className="p-2 -mr-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-          aria-label="Toggle Dark Mode"
-        >
-          {isDark ? <Sun size={16} /> : <Moon size={16} />}
-        </button>
-      </div>
+      <motion.div 
+        variants={navContainer}
+        initial="hidden"
+        animate="visible"
+        className="flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400"
+      >
+        <motion.a variants={navItem} href="#about" className="hover:text-zinc-100 transition-colors hidden md:block">About</motion.a>
+        <motion.a variants={navItem} href="#projects" className="hover:text-zinc-100 transition-colors hidden md:block">Projects</motion.a>
+        <motion.a variants={navItem} href="#timeline" className="hover:text-zinc-100 transition-colors hidden md:block">Timeline</motion.a>
+        <motion.a variants={navItem} href="#contact" className="hover:text-zinc-100 transition-colors hidden md:block">Contact</motion.a>
+      </motion.div>
     </motion.nav>
   );
 }

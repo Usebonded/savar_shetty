@@ -1,6 +1,11 @@
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 
+const textMask = {
+  hidden: { y: '120%' },
+  show: { y: '0%', transition: { duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 } }
+};
+
 export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-6 md:px-12 overflow-hidden pt-20">
@@ -18,14 +23,10 @@ export default function Hero() {
           <p className="micro-label">Portfolio 2026</p>
         </motion.div>
 
-        <motion.h1 
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-          className="font-display font-black text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] tracking-[-0.05em] leading-[0.8] uppercase"
-        >
-          Savar <br /> <span className="text-stroke">Shetty</span>
-        </motion.h1>
+        <div className="font-display font-black text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] tracking-[-0.05em] leading-[0.8] uppercase">
+          <div className="overflow-hidden pb-4 -mb-4"><motion.div initial="hidden" animate="show" variants={textMask}>Savar</motion.div></div>
+          <div className="overflow-hidden pb-4 -mb-4"><motion.div initial="hidden" animate="show" variants={textMask} className="text-stroke">Shetty</motion.div></div>
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 40 }}

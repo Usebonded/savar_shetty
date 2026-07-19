@@ -1,104 +1,20 @@
-# 🌐 Personal Portfolio Website
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-A modern, responsive portfolio website showcasing my projects, technical skills, achievements, and professional journey in Artificial Intelligence, Machine Learning, Data Analytics, and Full-Stack Development.
+# Run and deploy your AI Studio app
 
-🔗 **Live Website:** https://savar-shetty.ai.studio/
+This contains everything you need to run your app locally.
 
----
+View your app in AI Studio: https://ai.studio/apps/91dc0c9a-0523-44fe-986a-91c3e2b15f11
 
-## 📖 Overview
+## Run Locally
 
-This portfolio serves as a central hub for my work, allowing visitors to explore:
+**Prerequisites:**  Node.js
 
-* 👋 About Me
-* 💼 Featured Projects
-* 🛠️ Technical Skills
-* 📜 Certifications & Achievements
-* 📄 Resume
-* 📬 Contact Information
-* 🔗 Social Links (LinkedIn & GitHub)
 
----
-
-## ✨ Features
-
-* Responsive design for desktop, tablet, and mobile
-* Clean and modern user interface
-* Interactive project showcase
-* Skills categorized by technology
-* Resume download section
-* Contact form for collaboration opportunities
-* Fast loading and optimized performance
-* Smooth animations and transitions
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-
-* HTML5
-* CSS3
-* JavaScript
-
-### Development Tools
-
-* Git
-* GitHub
-* Visual Studio Code
-
-### Deployment
-
-* Google AI Studio Hosting
-
----
-
-## 📂 Website Sections
-
-```text
-Home
-│
-├── Hero Section
-├── About
-├── Skills
-├── Projects
-├── Certifications
-├── Resume
-├── Contact
-└── Footer
-```
-
-## 📸 Preview
-
-Visit the live portfolio here:
-
-👉 https://savar-shetty.ai.studio/
-
----
-
-## 📬 Connect With Me
-
-**Portfolio**
-https://savar-shetty.ai.studio/
-
-**LinkedIn**
-https://www.linkedin.com/in/savar-shetty-27773b310
-
-**GitHub**
-https://github.com/Usebonded
-
----
-
-## 🤝 Contributing
-
-Suggestions and feedback are always welcome. Feel free to fork the repository, open an issue, or submit a pull request.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. Feel free to use it as inspiration for your own portfolio while giving appropriate credit.
-
----
-
-⭐ If you like this project, consider giving it a star on GitHub!
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
